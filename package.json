@@ -1,0 +1,20 @@
+{
+  "name": "liri",
+  "version": "1.0.0",
+  "description": "Building the liri assistant using the node.js and npm.",
+  "main": "liri.js",
+  "scripts": {
+    "test": "liri twitter spotify omdb"
+  },
+  "keywords": [
+    "liri",
+    "twitter",
+    "spotify",
+    "omdb"
+  ],
+  "author": "Kadiro Elemo",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.9"
+  }
+}
