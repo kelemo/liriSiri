@@ -61,16 +61,16 @@ switch(action){
 
 function showTweets(){
   //Display last 20 Tweets
-  var screenName = {screen_name: 'stefanieding'};
+  var screenName = {screen_name: ''};
   client.get('statuses/user_timeline', screenName, function(error, tweets, response){
     if(!error){
       for(var i = 0; i<tweets.length; i++){
         var date = tweets[i].created_at;
-        console.log("@StefanieDing: " + tweets[i].text + " Created At: " + date.substring(0, 19));
+        console.log("@iBrainCode: " + tweets[i].text + " Created At: " + date.substring(0, 19));
         console.log("-----------------------");
         
         //adds text to log.txt file
-        fs.appendFile('log.txt', "@StefanieDing: " + tweets[i].text + " Created At: " + date.substring(0, 19));
+        fs.appendFile('log.txt', "@iBrainCode: " + tweets[i].text + " Created At: " + date.substring(0, 19));
         fs.appendFile('log.txt', "-----------------------");
       }
     }else{
@@ -108,8 +108,7 @@ function spotifySong(song){
 }
 
 function omdbData(movie){
-  var omdbURL = 'http://www.omdbapi.com/?t=' + movie + '&plot=short&tomatoes=true';
-
+  var omdbURL = 'http://www.omdbapi.com/?i='+movie+'tt3896198&apikey=54c19811'
   request(omdbURL, function (error, response, body){
     if(!error && response.statusCode == 200){
       var body = JSON.parse(body);
@@ -122,7 +121,7 @@ function omdbData(movie){
       console.log("Plot: " + body.Plot);
       console.log("Actors: " + body.Actors);
       console.log("Rotten Tomatoes Rating: " + body.tomatoRating);
-      console.log("Rotten Tomatoes URL: " + body.tomatoURL);
+      console.log("Rotten Tomatoes URL: " + body.);
 
       //adds text to log.txt
       fs.appendFile('log.txt', "Title: " + body.Title);
@@ -133,20 +132,16 @@ function omdbData(movie){
       fs.appendFile('log.txt', "Plot: " + body.Plot);
       fs.appendFile('log.txt', "Actors: " + body.Actors);
       fs.appendFile('log.txt', "Rotten Tomatoes Rating: " + body.tomatoRating);
-      fs.appendFile('log.txt', "Rotten Tomatoes URL: " + body.tomatoURL);
+      fs.appendFile('log.txt', "Rotten Tomatoes URL: " + body.);
 
     } else{
       console.log('Error occurred.')
     }
     if(movie === "Mr. Nobody"){
       console.log("-----------------------");
-      console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
-      console.log("It's on Netflix!");
 
       //adds text to log.txt
       fs.appendFile('log.txt', "-----------------------");
-      fs.appendFile('log.txt', "If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
-      fs.appendFile('log.txt', "It's on Netflix!");
     }
   });
 
